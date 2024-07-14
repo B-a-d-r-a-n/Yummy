@@ -6,21 +6,21 @@ $(document).ready(() => {
   $("body").css("overflow", "visible");
 });
 function openSideNav() {
-  $(".open-icon").on("click", function () {
+ 
     $(".side-nav-menu").animate({ left: "0" }, 500);
     $(".top-hideNav").animate({ top: "0" }, 500);
-  });
+  
   $(".open-icon").addClass("d-none");
   $(".close-icon").removeClass("d-none");
 }
 
 function closeSideNav() {
-  $(".close-icon").on("click", function () {
+  
     $(".side-nav-menu").animate({ left: "-256px" }, 500);
     $(".top-hideNav").animate({ top: "295px" }, 500);
     $(".open-icon").removeClass("d-none");
     $(".close-icon").addClass("d-none");
-  });
+  
 }
 
 async function nameSearch(name) {
@@ -49,6 +49,7 @@ async function getMealsCat() {
   let data = await url.json();
   displayMealsCat(data.categories);
   loading.classList.add("d-none");
+  closeSideNav();
 }
 
 async function getMealsByCat(cat) {
@@ -68,6 +69,7 @@ async function getMealsArea() {
   let data = await url.json();
   displayMealsArea(data.meals);
   loading.classList.add("d-none");
+  closeSideNav();
 }
 async function getMealsByArea(area) {
   loading.classList.remove("d-none");
@@ -87,6 +89,7 @@ async function getMealsIngredient() {
   let data = await url.json();
   displayMealsIngredient(data.meals);
   loading.classList.add("d-none");
+  closeSideNav();
 }
 async function getMealsByIngredient(ingredient) {
   loading.classList.remove("d-none");
@@ -287,6 +290,7 @@ function displayMealsIngredient(arr) {
 // كده شكلها اجمد
 function searchToggle() {
   $(".searchMeal").toggleClass("invisible");
+  closeSideNav();
 }
 
 function contactControl() {
@@ -419,6 +423,7 @@ function contactControl() {
   document.getElementById("repasswordInput").addEventListener("focus", () => {
     repasswordInputTouched = true;
   });
+  closeSideNav();
 }
 
 let nameInputTouched = false;
